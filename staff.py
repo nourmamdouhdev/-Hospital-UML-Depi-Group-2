@@ -1,5 +1,6 @@
 from person import Person
 
+
 class Staff(Person):
     VALID_POSITIONS = {"Doctor", "Nurse", "Receptionist", "Technician", "Admin"}
 
@@ -24,4 +25,3 @@ class Staff(Person):
 
     def view_info(self):
         return f"Name: {self.name}, Age: {self.age}, Position: {self.position}"
-\
