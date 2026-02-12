@@ -5,7 +5,3 @@ class Person:
 
     def view_info(self):
         return "Name: " + self.name + " | Age: " + str(self.age)
-    
-    X=Person("mohamed", 20)
-    print(X.view_info())
-    

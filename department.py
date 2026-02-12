@@ -1,32 +1,25 @@
-##___________________CLASS DEPARTMENT______________________##
+from staff import Staff
 
 class Department:
-    """
-    Represents a department in the hospital, managing patients and staff.
-    """
-
     def __init__(self, number):
-        """Initializes a Department instance with the given number."""
         self.number = number
         self.patients = []
         self.staff = []
 
     # ---------------- Add ---------------- #
-
-    def add_patient(self, patient, patient_id):
-        """Adds a patient to the department."""
+    def add_patient(self, patient):
+        """Adds a Patient object to the department."""
         self.patients.append(patient)
-        self.patients.append(patient_id)
 
-    def add_staff(self, staff_member, member_id):
-        """Adds a staff member to the department."""
-        self.staff.append(staff_member)
-        self.staff.append(member_id)
+    def add_staff(self, staff_member):
+        """Adds a Staff object to the department."""
+        if isinstance(staff_member, Staff):
+            self.staff.append(staff_member)
+        else:
+            raise ValueError("Must provide a Staff object")
 
     # ---------------- Department Name ---------------- #
-
     def department_name(self):
-        """Returns the department name based on its number."""
         departments = {
             1: "Cardiology",
             2: "Neurology",
@@ -37,36 +30,17 @@ class Department:
         return departments.get(self.number, "Invalid department number")
 
     # ---------------- Get ---------------- #
-
     def get_all_patients(self):
-        """Returns a list of all patients."""
-        return self.patients
+        """Returns formatted info of all patients."""
+        return [p.view_info() for p in self.patients]
 
     def get_all_staff(self):
-        """Returns a list of all staff members."""
-        return self.staff
-
-    # ---------------- Remove ---------------- #
-
-    def remove_patient(self, patient, patient_id):
-        """Removes a patient using name and ID."""
-        if patient in self.patients:
-            index = self.patients.index(patient)
-            self.patients.pop(index)
-            self.patients.pop(index)
-
-    def remove_staff(self, staff_member, member_id):
-        """Removes a staff member using name and ID."""
-        if staff_member in self.staff:
-            index = self.staff.index(staff_member)
-            self.staff.pop(index)
-            self.staff.pop(index)
+        return self.staff  # ترجع Staff objects مباشرة
 
     # ---------------- String ---------------- #
-
     def __str__(self):
         return (
             f"Department: {self.department_name()}, "
-            f"Patients: {len(self.patients)//2}, "
-            f"Staff: {len(self.staff)//2}"
+            f"Patients: {len(self.patients)}, "
+            f"Staff: {len(self.staff)}"
         )
