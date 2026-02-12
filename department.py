@@ -8,11 +8,9 @@ class Department:
 
     # ---------------- Add ---------------- #
     def add_patient(self, patient):
-        """Adds a Patient object to the department."""
         self.patients.append(patient)
 
     def add_staff(self, staff_member):
-        """Adds a Staff object to the department."""
         if isinstance(staff_member, Staff):
             self.staff.append(staff_member)
         else:
@@ -31,11 +29,15 @@ class Department:
 
     # ---------------- Get ---------------- #
     def get_all_patients(self):
-        """Returns formatted info of all patients."""
-        return [p.view_info() for p in self.patients]
+        return self.patients
 
-    def get_all_staff(self):
-        return self.staff  # ترجع Staff objects مباشرة
+    def display_patients(self):
+        if not self.patients:
+            print("No patients in this department.")
+            return
+
+        for p in self.patients:
+            print(f"Name: {p['name']}, ID: {p['id']}")
 
     # ---------------- String ---------------- #
     def __str__(self):
@@ -44,3 +46,21 @@ class Department:
             f"Patients: {len(self.patients)}, "
             f"Staff: {len(self.staff)}"
         )
+
+    def remove_staff_by_id(self, staff_id):
+        for s in self.staff:
+            if s.id == staff_id:
+                self.staff.remove(s)
+                return True
+        return False
+        
+    def display_staff(self):
+        if not self.staff:
+            print("No staff in this department.")
+            return
+
+        for s in self.staff:
+            print(s.view_info())
+
+    def get_all_staff(self):
+        return self.staff

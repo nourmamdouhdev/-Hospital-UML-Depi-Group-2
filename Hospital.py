@@ -47,7 +47,7 @@ class Hospital:
         """
         Returns total number of patients in the hospital.
         """
-        return sum(len(dept.patients) // 2 for dept in self.departments.values())
+        return sum(len(dept.patients)  for dept in self.departments.values())
 
     def total_staff(self):
         """
