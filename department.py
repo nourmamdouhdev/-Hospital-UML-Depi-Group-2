@@ -139,6 +139,9 @@ class Department:
             return
         self.remove_staff(staff_member, member_id)
 
+##___________________No. of patient and staff in department______________________##
+
+
     def __str__(self):
         """
         Returns a string representation of the department, including its name, number of patients, and number of staff members.
@@ -146,8 +149,13 @@ class Department:
         return f"Department: {self.Department_name()}, Patients: {len(self.patients) // 2}, Staff: {len(self.staff) // 2}"
 
 
+
+
+
 ##_______________________TEST FOR CLASS__________________________##
-#
+
+
+
 
 import sys
 dept_number = input("Enter department id: \n" \
