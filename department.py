@@ -39,7 +39,7 @@ class Department:
         self.staff.append(member_id)
 
 
-    ##----------------------------------------------------##
+    ##------------------------Know department Name----------------------------##
 
 
     def Department_name(self):
@@ -61,6 +61,8 @@ class Department:
         else:
             return "Invalid department number"
             pass
+
+##------------------------Input patient and staff----------------------------##
 
     def input_patient(self):
         """
@@ -90,6 +92,8 @@ class Department:
          """
          return self.staff
     
+##------------------------Remove patient and staff----------------------------##
+
 
     def remove_patient(self, patient ,patient_id):
         """
